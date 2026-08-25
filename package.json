@@ -1,0 +1,46 @@
+{
+  "name": "dsh-safe-download-files",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Safe public HTTP(S) file downloader tool for DeepSeek Harness",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "downloader.js",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22.22.2"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "dsh-safe-web-fetch": "0.1.0-next.0",
+    "file-type": "22.0.2"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.1 <5",
+    "@deepseek-ai/dsh-system-prompt": ">=0.1.1-rc.2 <0.2.0",
+    "@deepseek-ai/dsh-tools": ">=0.1.1-rc.2 <0.2.0"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "4.0.1",
+    "@deepseek-ai/dsh-invariants": "0.1.1-rc.2",
+    "@deepseek-ai/dsh-system-prompt": "0.1.1-rc.2",
+    "@deepseek-ai/dsh-tools": "0.1.1-rc.2",
+    "@deepseek-ai/dsh-web": "0.1.1-rc.2"
+  }
+}

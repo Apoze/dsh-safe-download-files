@@ -1,0 +1,4 @@
+- insert:
+    - id: safe-download-files
+      name: dsh-safe-download-files
+
