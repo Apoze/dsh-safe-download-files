@@ -1,23 +1,68 @@
-# dsh-safe-download-files
+# Safe File Downloads for DeepSeek Harness
 
-Plugin local DeepSeek Harness exposant un outil modèle unique :
+A DeepSeek Harness plugin that exposes one model tool:
 
 ```text
-download_files({ directory?, items: [{ url, file_name? }] })
+download_files({
+  directory?: string,
+  items: [{ url: string, file_name?: string }]
+})
 ```
 
-- Télécharge uniquement des URL HTTP(S) publiques dans un sous-dossier du workspace.
-- Réutilise les politiques anti-SSRF et le transport DNS-épinglé de `dsh-safe-web-fetch`.
-- Revalide chaque redirection, limite tailles/durée/concurrence et n’envoie aucun credential.
-- Vérifie le type réel, refuse les formats actifs/dangereux et ne remplace jamais un fichier existant.
-- Publie les fichiers atomiquement et conserve les succès lorsqu’un autre élément échoue.
+It safely downloads public files into the current DSH workspace. This is an unofficial community plugin.
 
-Formats : images raster, PDF, texte/Markdown/CSV/JSON/XML, audio et vidéo courants. Archives, Office, HTML, SVG, scripts, exécutables, WebAssembly et types inconnus sont refusés.
+## Security
+
+- HTTP(S) GET only, with no model-controlled headers, cookies, or credentials.
+- Blocks localhost, private networks, metadata endpoints, and reserved IP ranges.
+- Pins validated DNS results and revalidates every redirect.
+- Detects the real file type and rejects mismatched or unknown content.
+- Refuses executables, scripts, archives, Office files, HTML, SVG, and WebAssembly.
+- Rejects absolute paths, parent traversal, unsafe names, and escaping symlinks.
+- Writes temporary files first and publishes them atomically.
+- Never overwrites an existing file.
+
+Accepted content includes raster images, PDF, UTF-8 text/Markdown/CSV/JSON/XML, and common audio/video formats.
+
+## Install
+
+```sh
+dsh plugin --profile web add "git+https://github.com/Apoze/dsh-safe-download-files.git#v0.1.0"
+```
+
+This is a complete DSH bundle. Restart DSH after installation:
+
+```sh
+dsh --profile web --dump-config
+dsh web
+```
+
+No manual Cordis entry is required.
+
+## Limits
+
+| Limit | Value |
+| --- | ---: |
+| Files per call | 100 |
+| Concurrent downloads | 8 |
+| File size | 25 MB |
+| Total call size | 250 MB |
+| Redirects | 5 |
+| Timeout per file | 30 seconds |
+| Tool timeout | 420 seconds |
+
+Successful files are kept when another item in the same batch fails.
+
+## Test
 
 ```sh
 pnpm install --frozen-lockfile
 pnpm test
 ```
 
-Le dépôt est local et installé par lien dans le profil DSH Web.
+The test suite covers SSRF, DNS pinning, redirect validation, MIME mismatch, path traversal, collisions, cancellation, size limits, and partial failures.
+
+## License
+
+[MIT](LICENSE)
 
