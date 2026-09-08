@@ -1,6 +1,6 @@
 {
   "name": "dsh-safe-download-files",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Safe public HTTP(S) file downloader tool for DeepSeek Harness",
   "license": "MIT",
@@ -33,7 +33,7 @@
     }
   },
   "dependencies": {
-    "dsh-safe-web-fetch": "0.1.0-next.0",
+    "dsh-safe-web-fetch": "https://github.com/Apoze/dsh-safe-web-fetch/releases/download/v0.1.0-next.1/dsh-safe-web-fetch-0.1.0-next.1.tgz",
     "file-type": "22.0.2"
   },
   "peerDependencies": {

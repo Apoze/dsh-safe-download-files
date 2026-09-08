@@ -27,7 +27,7 @@ Accepted content includes raster images, PDF, UTF-8 text/Markdown/CSV/JSON/XML, 
 ## Install
 
 ```sh
-dsh plugin --profile web add "git+https://github.com/Apoze/dsh-safe-download-files.git#v0.1.0"
+dsh plugin --profile web add "git+https://github.com/Apoze/dsh-safe-download-files.git#main"
 ```
 
 This is a complete DSH bundle. Restart DSH after installation:
@@ -66,3 +66,7 @@ The test suite covers SSRF, DNS pinning, redirect validation, MIME mismatch, pat
 
 [MIT](LICENSE)
 
+
+## HTTP transport maintenance
+
+Version 0.1.1 uses the compiled Apoze dsh-safe-web-fetch 0.1.0-next.1 release (source commit 736e690cccd2d74126455633cd92fd252c35de08), pinned with a lockfile integrity hash. Its Undici 8.10.2 fixes the uncaught paused-parser EOF crash described in https://github.com/nodejs/undici/issues/5360. No runtime exception suppression or node_modules patching is used. Existing DNS pinning, private-address rejection, cancellation and size limits remain in force.

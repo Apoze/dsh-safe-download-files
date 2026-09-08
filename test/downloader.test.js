@@ -27,8 +27,8 @@ test("downloads safe files, normalizes extensions, and never overwrites", async 
 
   assert.equal(result.succeeded, 2);
   assert.deepEqual(result.results.map((item) => item.path).sort(), [
-    "assets/images/portrait.png",
-    "assets/images/portrait-2.png",
+    join("assets", "images", "portrait.png"),
+    join("assets", "images", "portrait-2.png"),
   ].sort());
   assert.deepEqual(await readFile(join(workspace, result.results[0].path)), PNG);
   assert.deepEqual(await readFile(join(workspace, result.results[1].path)), PNG);
@@ -47,7 +47,7 @@ test("preserves safe Markdown names served as UTF-8 text/plain", async (t) => {
       })),
     },
   });
-  assert.equal(result.results[0].path, "downloads/README.md");
+  assert.equal(result.results[0].path, join("downloads", "README.md"));
 });
 
 test("blocks private DNS answers and private redirect targets before connecting", async (t) => {
@@ -134,7 +134,7 @@ test("revalidates and follows a public cross-origin redirect", async (t) => {
     },
   });
   assert.equal(result.succeeded, 1);
-  assert.equal(result.results[0].path, "downloads/manual.pdf");
+  assert.equal(result.results[0].path, join("downloads", "manual.pdf"));
   assert.deepEqual(hosts, ["origin.example", "cdn.example"]);
 });
 
@@ -179,7 +179,7 @@ test("rejects path traversal, symlink escapes, and model-controlled path separat
   }), /inside a workspace subdirectory/u);
 
   const outside = await temporaryWorkspace(t);
-  await symlink(outside, join(workspace, "escape"));
+  await symlink(outside, join(workspace, "escape"), process.platform === "win32" ? "junction" : "dir");
   await assert.rejects(downloadBatch({
     cwd: workspace,
     directory: "escape",
@@ -214,7 +214,7 @@ test("enforces declared size and preserves partial batch success", async (t) => 
   assert.equal(result.succeeded, 1);
   assert.equal(result.failed, 1);
   assert.equal(result.results[0].code, "DOWNLOAD_TOO_LARGE");
-  assert.equal(result.results[1].path, "downloads/file.txt");
+  assert.equal(result.results[1].path, join("downloads", "file.txt"));
 });
 
 test("honors cancellation and removes partial files", async (t) => {
