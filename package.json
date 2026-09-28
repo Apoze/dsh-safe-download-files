@@ -1,13 +1,19 @@
 {
   "name": "dsh-safe-download-files",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "description": "Safe public HTTP(S) file downloader tool for DeepSeek Harness",
   "license": "MIT",
   "repository": "github:Apoze/dsh-safe-download-files",
   "homepage": "https://github.com/Apoze/dsh-safe-download-files#readme",
   "bugs": "https://github.com/Apoze/dsh-safe-download-files/issues",
-  "keywords": ["deepseek-harness", "dsh", "download", "ssrf", "security"],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "download",
+    "ssrf",
+    "security"
+  ],
   "type": "module",
   "main": "index.js",
   "exports": {
@@ -37,15 +43,15 @@
     "file-type": "22.0.2"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": ">=4.0.1 <5",
-    "@deepseek-ai/dsh-system-prompt": ">=0.1.1-rc.2 <0.1.2 || >=0.1.2-alpha.1 <0.2.0",
-    "@deepseek-ai/dsh-tools": ">=0.1.1-rc.2 <0.1.2 || >=0.1.2-alpha.1 <0.2.0"
+    "@deepseek-ai/cordis": "4.0.4",
+    "@deepseek-ai/dsh-system-prompt": "0.2.0-rc.1",
+    "@deepseek-ai/dsh-tools": "0.2.0-rc.1"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "4.0.2",
-    "@deepseek-ai/dsh-invariants": "0.1.2-alpha.5",
-    "@deepseek-ai/dsh-system-prompt": "0.1.2-alpha.5",
-    "@deepseek-ai/dsh-tools": "0.1.2-alpha.5",
-    "@deepseek-ai/dsh-web": "0.1.2-alpha.5"
+    "@deepseek-ai/cordis": "4.0.4",
+    "@deepseek-ai/dsh-invariants": "0.2.0-rc.1",
+    "@deepseek-ai/dsh-system-prompt": "0.2.0-rc.1",
+    "@deepseek-ai/dsh-tools": "0.2.0-rc.1",
+    "@deepseek-ai/dsh-web": "0.2.0-rc.1"
   }
 }
