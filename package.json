@@ -1,6 +1,6 @@
 {
   "name": "dsh-safe-download-files",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "Safe public HTTP(S) file downloader tool for DeepSeek Harness",
   "license": "MIT",
@@ -28,7 +28,8 @@
     "README.md"
   ],
   "engines": {
-    "node": ">=22.22.2"
+    "node": ">=22.22.2",
+    "dsh": "0.2.1-alpha.4"
   },
   "scripts": {
     "test": "node --test"
@@ -43,15 +44,14 @@
     "file-type": "22.0.2"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "4.0.4",
-    "@deepseek-ai/dsh-system-prompt": "0.2.0-rc.1",
-    "@deepseek-ai/dsh-tools": "0.2.0-rc.1"
+    "@deepseek-ai/cordis": "4.0.5-alpha.2",
+    "@deepseek-ai/dsh-system-prompt": "0.2.1-alpha.4",
+    "@deepseek-ai/dsh-tools": "0.2.1-alpha.4"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "4.0.4",
-    "@deepseek-ai/dsh-invariants": "0.2.0-rc.1",
-    "@deepseek-ai/dsh-system-prompt": "0.2.0-rc.1",
-    "@deepseek-ai/dsh-tools": "0.2.0-rc.1",
-    "@deepseek-ai/dsh-web": "0.2.0-rc.1"
+    "@deepseek-ai/cordis": "4.0.5-alpha.2",
+    "@deepseek-ai/dsh-system-prompt": "0.2.1-alpha.4",
+    "@deepseek-ai/dsh-tools": "0.2.1-alpha.4",
+    "@deepseek-ai/dsh-web": "0.2.1-alpha.4"
   }
 }

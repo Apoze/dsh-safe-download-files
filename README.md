@@ -76,3 +76,9 @@ Version 0.1.1 uses the compiled Apoze dsh-safe-web-fetch 0.1.0-next.1 release (s
 Cette version cible les contrats V4 de DSH et Cordis 4.0.4. L’installation locale utilise le fork natif NInfer basé sur le tag officiel `dsh-v0.2.0-rc.1`. Les anciens plugins de récupération finale ne doivent pas être activés en parallèle avec `dsh-generation-recovery`.
 
 Pour développer contre le fork natif : installer les dépendances, puis exécuter `DSH_NATIVE_ROOT=/chemin/du/fork node scripts/link-native-core.mjs` avant la compilation. Les liens restent locaux dans `node_modules` ; les manifests et fichiers de verrouillage restent portables.
+
+## DSH 0.2.1 compatibility
+
+This version targets DSH `0.2.1-alpha.4`; the manifest declares this tested runtime through `engines.dsh`. Earlier plugin versions remain available in Git history for DSH `0.2.0-rc.1`.
+
+The removed DSH runtime-invariant package is no longer a direct dependency. Public-URL validation and download protections remain enabled.
