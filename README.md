@@ -79,6 +79,6 @@ Pour développer contre le fork natif : installer les dépendances, puis exécut
 
 ## DSH 0.2.1 compatibility
 
-This version targets DSH `0.2.1-alpha.4`; the manifest declares this tested runtime through `engines.dsh`. Earlier plugin versions remain available in Git history for DSH `0.2.0-rc.1`.
+This version targets DSH `0.2.1-rc.3`; the manifest declares this tested runtime through `engines.dsh`. Earlier plugin versions remain available in Git history for DSH `0.2.0-rc.1`.
 
 The removed DSH runtime-invariant package is no longer a direct dependency. Public-URL validation and download protections remain enabled.
